@@ -1,1 +1,1 @@
-Project 3 Monty
+Project Monty
