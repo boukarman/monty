@@ -1,32 +1,27 @@
 #include "monty.h"
 
 /**
- * free_stack - free stack
- * @stack: stack
+ * main - main function
+ * @argc: arguments count
+ * @argv: arguments table
  *
- * Return: nothing
+ * Return: 0 on Success, 1 on failure
  */
-void free_stack(stack_t **stack)
+int main(int argc, char **argv)
 {
-	stack_t *temp = NULL;
+	stack_t *stack = NULL;
 
-	if (*stack == NULL)
-		return;
-	while (*stack != NULL)
+	/* check if the arguments are different to 2*/
+	if (argc != 2)
 	{
-		temp = *stack;
-		*stack = (*stack)->prev;
-		free(temp), temp = NULL;
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
-}
-
-/**
- * is_empty - check if the stack is empty
- * @stack: stack
- *
- * Return: 1 if empty, 0 if not
- **/
-int is_empty(stack_t *stack)
-{
-	return (stack == NULL);
+	/* reading the file*/
+	read_file(argv[1], &stack);
+	if (!is_empty(stack))
+	{
+		free_stack(&stack);
+	}
+	return (0);
 }
