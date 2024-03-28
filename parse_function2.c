@@ -3,9 +3,9 @@
 /**
  * mod_elem - computes the rest of the division of the second top element of
  * the stack by the top element of the stack.
- * and operate pop, unless top equal zero
+ * and operate pop, unless top == zero
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  * Return: nothing
  */
 void mod_elem(stack_t **stack, unsigned int line_number)
@@ -24,13 +24,13 @@ void mod_elem(stack_t **stack, unsigned int line_number)
 	}
 	result = (*stack)->prev->n % (*stack)->n;
 	(*stack)->prev->n = result;
-	pop(stack, line_number);
+	pop_layer(stack, line_number);
 }
 
 /**
  * print_char - print the top most value as a char if not out of range
  * @stack: stack
- * @line_number: line_number
+ * @line_number: line number
  * Return: nothing
  */
 void print_char(stack_t **stack, unsigned int line_number)
@@ -50,41 +50,41 @@ void print_char(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * print_str - print the string starting at the top of the stack followed
+ * print_str - prints the string starting at the top of the stack, followed
  * by a new line, while the interger being treated as an ascii value
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  * Return: nothing
  */
 void print_str(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = *stack;
+	stack_t *temp = *stack;
 
 	(void)line_number;
-	if (tmp == NULL)
+	if (temp == NULL)
 	{
 		putchar('\n');
 		return;
 	}
 
-	while (tmp && (tmp->n < 128 && tmp->n > 0))
+	while (temp && (temp->n < 128 && temp->n > 0))
 	{
-		fprintf(stdout, "%c", tmp->n);
-		tmp = tmp->prev;
+		fprintf(stdout, "%c", temp->n);
+		temp = temp->prev;
 	}
 	putchar('\n');
 }
 
 /**
- * print_str_ln - prints the string starting at the top of the stack, followed
+ * rotl_str - prints the string starting at the top of the stack, followed
  * by a new line, while the interger being treated as an ascii value
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  * Return: nothing
  */
-void print_str_ln(stack_t **stack, unsigned int line_number)
+void rotl_str(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = NULL, *first = NULL;
+	stack_t *temp = NULL, *first = NULL;
 
 	(void)line_number;
 	if (*stack == NULL || (*stack)->prev == NULL)
@@ -97,20 +97,20 @@ void print_str_ln(stack_t **stack, unsigned int line_number)
 	first->prev = NULL;
 	first->next = NULL;
 	temp = *stack;
-	while (tmp->prev != NULL)
-		tmp = tmp->prev;
-	tmp->prev = first;
-	first->next = tmp;
+	while (temp->prev != NULL)
+		temp = temp->prev;
+	temp->prev = first;
+	first->next = temp;
 }
 
 /**
- * print_str_line - prints the string starting at the top of the stack, followed
+ * rotr_str - prints the string starting at the top of the stack, followed
  * by a new line, while the interger being treated as an ascii value
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  * Return: nothing
  */
-void print_str_line(stack_t **stack, unsigned int line_number)
+void rotr_str(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL, *first = *stack, *last = NULL;
 	(void)line_number;
@@ -118,12 +118,12 @@ void print_str_line(stack_t **stack, unsigned int line_number)
 	{
 		return;
 	}
-	tmp = *stack;
-	while (tmp->prev->prev != NULL)
-		tmp = tmp->prev;
-	last = tmp->prev;
+	temp = *stack;
+	while (temp->prev->prev != NULL)
+		temp = temp->prev;
+	last = temp->prev;
 	last->next = NULL;
-	tmp->prev = NULL;
+	temp->prev = NULL;
 	last->prev = first;
 	first->next = last;
 	*stack = last;

@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * add_layer - add first layer to the sencond top one, and
+ * add_layer - Add first layer data to the sencond top one, and
  * remove the top
  * @stack: stack
  * @line_number: line number
@@ -23,23 +23,23 @@ void add_layer(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * print_elem - print the elements of the stack
+ * nop_elem - print the elements of the stack
  * @stack: stack
- * @line_number: line_number
+ * @line_number: line number
  *
  * Return: nothing
  */
-void print_elem(stack_t **stack, unsigned int line_number)
+void nop_elem(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
 }
 
 /**
- * sub_layer - subtract the top from the soocnd to layer
+ * sub_layer - subtract the top from the second to layer
  * and operate pop
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
@@ -55,9 +55,9 @@ void sub_layer(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * divide_elem - divide the second top element of the stack by the top
+ * divide_elem - div divides the second top element of the stack by the top
  * element of the stack.
- * and operate pop, unless top equal zero
+ * and operate pop, unless top == zero
  * @stack: stack
  * @line_number: line number
  *
@@ -83,7 +83,7 @@ void divide_elem(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mul_elem - multiplie the second top element of the stack with the
+ * mul_elem - multiplies the second top element of the stack with the
  * top element of the stack.
  * and operate pop.
  * @stack: stack

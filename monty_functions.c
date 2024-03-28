@@ -9,6 +9,7 @@ static int arg;
  *
  * Return: nothing
  */
+
 void read_the_file(char *filename, stack_t **stack)
 {
 	size_t len = 0;
@@ -18,25 +19,25 @@ void read_the_file(char *filename, stack_t **stack)
 	inst_fun func;
 	FILE *file;
 
-	/*Open file*/
+	/*Open the file*/
 	file = fopen(filename, "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	/*read lines*/
+	/*read the lines*/
 
 	line = NULL;
 	while ((lread = getline(&line, &len, file)) != -1)
 	{
-		opcode = parse_line(line_num, line);
+		opcode = parse_the_line(line_num, line);
 		if (opcode == NULL || opcode[0] == '#')
 		{
 			line_num++;
 			continue;
 		}
-		/*call the related func to the opcode*/
+		/*get the function related to the opcode*/
 		func = get_opcode_func(opcode);
 		if (func == NULL)
 		{
@@ -70,7 +71,7 @@ char *parse_the_line(int linenum, char *line)
 	if (strcmp(opcode, "push") == 0)
 	{
 		argument = strtok(NULL, " \n");
-		if (argument != NULL && is_numerical(argument))
+		if (argument != NULL && is_numeric(argument))
 		{
 			arg = atoi(argument);
 		}
@@ -85,7 +86,7 @@ char *parse_the_line(int linenum, char *line)
 
 /**
  * is_numeric - is a number
- * @str: string
+ * @str: string to check
  *
  * Return: 1 if number or 0 if not
  */
@@ -109,7 +110,7 @@ int is_numeric(char *str)
 	return (1);
 }
 /**
- * get_opcode_func - get function related to the opcode
+ * get_opcode_func - get associete function to the opcode
  * @opcode: string
  *
  * Return: appropriete function or NULL
@@ -119,21 +120,21 @@ inst_fun get_opcode_func(char *opcode)
 	int i = 0;
 
 	instruction_t instructions[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"div", divide},
-		{"sub", sub},
-		{"mul", mul},
-		{"mod", mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl},
-		{"rotr", rotr},
+		{"push", push_elem},
+		{"pall", pall_elem},
+		{"prnt", prnt_node},
+		{"pop", pop_layer},
+		{"swap", swap_elem},
+		{"add", add_layer},
+		{"nop", nop_elem},
+		{"div", divide_elem},
+		{"sub", sub_layer},
+		{"mul", mul_elem},
+		{"mod", mod_elem},
+		{"pchar", print_char},
+		{"pstr", print_str},
+		{"rotl", rotl_str},
+		{"rotr", rotr_str},
 		{NULL, NULL}
 		};
 	while (instructions[i].f != NULL)

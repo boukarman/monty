@@ -7,7 +7,6 @@
  *
  * Return: nothing
  */
-
 void push_elem(stack_t **stack, unsigned int line_number)
 {
 	stack_t *layer = malloc(sizeof(stack_t));
@@ -21,7 +20,7 @@ void push_elem(stack_t **stack, unsigned int line_number)
 	layer->n = get_arg();
 	layer->next = NULL;
 	layer->prev = *stack;
-	if (!is_stack_mpty(*stack))
+	if (!is_empty(*stack))
 	{
 		(*stack)->next = layer;
 	}
@@ -29,32 +28,32 @@ void push_elem(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pall_elem - print the stack elements
- * @stack: stack
- * @line_number: line_number
- *
- * Return: nothing
- */
-void pall_elem(stack_t **stack, unsigned int line_number)
-{
-	stack_t *tmp = *stack;
-
-	(void)line_number;
-	while (tmp != NULL)
-	{
-		fprintf(stdout, "%d\n", tmp->n);
-		tmp = tmp->prev;
-	}
-}
-
-/**
- * pint_node - print the top most stack node
+ * pall_elem - print the elements of the stack
  * @stack: stack
  * @line_number: line number
  *
  * Return: nothing
  */
-void pint_node(stack_t **stack, unsigned int line_number)
+void pall_elem(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp = *stack;
+
+	(void)line_number;
+	while (temp != NULL)
+	{
+		fprintf(stdout, "%d\n", temp->n);
+		temp = temp->prev;
+	}
+}
+
+/**
+ * prnt_node - print the top most stack node
+ * @stack: stack
+ * @line_number: line number
+ *
+ * Return: nothing
+ */
+void prnt_node(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
@@ -67,15 +66,15 @@ void pint_node(stack_t **stack, unsigned int line_number)
 /**
  * pop_layer - delete the top most layer of the stack
  * @stack: stack
- * @line_number: line_number
+ * @line_number: line number
  *
  * Return: nothing
  */
 void pop_layer(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp = NULL;
+	stack_t *temp = NULL;
 
-	if (is_stack_empty(*stack))
+	if (is_empty(*stack))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
@@ -99,20 +98,20 @@ void pop_layer(stack_t **stack, unsigned int line_number)
 /**
  * swap_elem - swap the top two elements of the slack
  * @stack: stack
- * @line_number: line_number
+ * @line_number: line number
  *
  * Return: nothing
  */
 void swap_elem(stack_t **stack, unsigned int line_number)
 {
-	int tmp;
+	int temp;
 
 	if (*stack == NULL || (*stack)->prev == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	tmp = (*stack)->n;
+	temp = (*stack)->n;
 	(*stack)->n = (*stack)->prev->n;
-	(*stack)->prev->n = tmp;
+	(*stack)->prev->n = temp;
 }
