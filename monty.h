@@ -40,27 +40,27 @@ typedef struct instruction_s
 typedef void (*inst_fun)(stack_t **stack, unsigned int line_number);
 
 inst_fun get_opcode_func(char *str);
-void read_the_file(char *filename, stack_t **stack);
+void read_file(char *filename, stack_t **stack);
 char *parse_line(int linenum, char *line);
-int is_numeric(char *str);
+int is_numerical(char *str);
 int is_empty(stack_t *stack);
-void push_elem(stack_t **stack, unsigned int line_number);
-void pall_elem(stack_t **stack, unsigned int line_number);
-void prnt_node(stack_t **stack, unsigned int line_number);
-void pop_layer(stack_t **stack, unsigned int line_number);
-void swap_elem(stack_t **stack, unsigned int line_number);
-void add_layer(stack_t **stack, unsigned int line_number);
-void nop_elem(stack_t **stack, unsigned int line_number);
-void free_the_stack(stack_t **stack);
-void sub_layer(stack_t **stack, unsigned int line_number);
-void divide_elem(stack_t **stack, unsigned int line_number);
-void mul_elem(stack_t **stack, unsigned int line_number);
-void mod_elem(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void free_stack(stack_t **stack);
+void sub(stack_t **stack, unsigned int line_number);
+void divide(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
 int get_arg(void);
-void print_char(stack_t **stack, unsigned int line_number);
-void print_str(stack_t **stack, unsigned int line_number);
-void rotl_str(stack_t **stack, unsigned int line_number);
-void rotr_str(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 
 #endif

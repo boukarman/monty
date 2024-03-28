@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * add_layer - Add first layer data to the sencond top one, and
+ * add - Add first layer data to the sencond top one, and
  * remove the top
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void add_layer(stack_t **stack, unsigned int line_number)
+void add(stack_t **stack, unsigned int line_number)
 {
 	int temp;
 
@@ -19,31 +19,31 @@ void add_layer(stack_t **stack, unsigned int line_number)
 	}
 	temp = (*stack)->n + (*stack)->prev->n;
 	(*stack)->prev->n = temp;
-	pop_layer(stack, line_number);
+	pop(stack, line_number);
 }
 
 /**
- * nop_elem - print the elements of the stack
+ * nop - print the elements of the stack
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void nop_elem(stack_t **stack, unsigned int line_number)
+void nop(stack_t **stack, unsigned int line_number)
 {
 	(void)stack;
 	(void)line_number;
 }
 
 /**
- * sub_layer - subtract the top from the second to layer
+ * sub - subtract the top from the soocnd to layer
  * and operate pop
  * @stack: stack
  * @line_number: line_number
  *
  * Return: nothing
  */
-void sub_layer(stack_t **stack, unsigned int line_number)
+void sub(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL || (*stack)->prev == NULL)
 	{
@@ -51,19 +51,19 @@ void sub_layer(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->prev->n = (*stack)->prev->n - (*stack)->n;
-	pop_layer(stack, line_number);
+	pop(stack, line_number);
 }
 
 /**
- * divide_elem - div divides the second top element of the stack by the top
+ * divide - div divides the second top element of the stack by the top
  * element of the stack.
  * and operate pop, unless top == zero
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void divide_elem(stack_t **stack, unsigned int line_number)
+void divide(stack_t **stack, unsigned int line_number)
 {
 	int result = 0;
 
@@ -79,19 +79,19 @@ void divide_elem(stack_t **stack, unsigned int line_number)
 	}
 	result = (*stack)->prev->n / (*stack)->n;
 	(*stack)->prev->n = result;
-	pop_layer(stack, line_number);
+	pop(stack, line_number);
 }
 
 /**
- * mul_elem - multiplies the second top element of the stack with the
+ * mul - multiplies the second top element of the stack with the
  * top element of the stack.
  * and operate pop.
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void mul_elem(stack_t **stack, unsigned int line_number)
+void mul(stack_t **stack, unsigned int line_number)
 {
 	int result = 0;
 
@@ -103,5 +103,5 @@ void mul_elem(stack_t **stack, unsigned int line_number)
 
 	result = (*stack)->prev->n * (*stack)->n;
 	(*stack)->prev->n = result;
-	pop_layer(stack, line_number);
+	pop(stack, line_number);
 }

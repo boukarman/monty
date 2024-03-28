@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * push_elem - push element to stack
+ * push - push element to the stack
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void push_elem(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *layer = malloc(sizeof(stack_t));
 
@@ -28,13 +28,13 @@ void push_elem(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pall_elem - print the elements of the stack
+ * pall - print the elements of the stack
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void pall_elem(stack_t **stack, unsigned int line_number)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
@@ -47,13 +47,13 @@ void pall_elem(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * prnt_node - print the top most stack node
+ * pint - print the top most stack node
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void prnt_node(stack_t **stack, unsigned int line_number)
+void pint(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
@@ -64,13 +64,13 @@ void prnt_node(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * pop_layer - delete the top most layer of the stack
+ * pop - delete the top most layer of the stack
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void pop_layer(stack_t **stack, unsigned int line_number)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
 
@@ -96,13 +96,13 @@ void pop_layer(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * swap_elem - swap the top two elements of the slack
+ * swap - swap the top two elements of the slack
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  *
  * Return: nothing
  */
-void swap_elem(stack_t **stack, unsigned int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	int temp;
 

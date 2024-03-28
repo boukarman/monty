@@ -3,14 +3,13 @@
 static int arg;
 
 /**
- * read_the_file - read the file lines
+ * read_file - read the file lines
  * @filename: filename
  * @stack: stack
  *
  * Return: nothing
  */
-
-void read_the_file(char *filename, stack_t **stack)
+void read_file(char *filename, stack_t **stack)
 {
 	size_t len = 0;
 	ssize_t lread = 0;
@@ -31,7 +30,7 @@ void read_the_file(char *filename, stack_t **stack)
 	line = NULL;
 	while ((lread = getline(&line, &len, file)) != -1)
 	{
-		opcode = parse_the_line(line_num, line);
+		opcode = parse_line(line_num, line);
 		if (opcode == NULL || opcode[0] == '#')
 		{
 			line_num++;
@@ -52,13 +51,13 @@ void read_the_file(char *filename, stack_t **stack)
 }
 
 /**
- * parse_the_line - parse the line
+ * parse_line - parse the line
  * @linenum: linenum
  * @line: line
  *
  * Return: opcode or NULL
  */
-char *parse_the_line(int linenum, char *line)
+char *parse_line(int linenum, char *line)
 {
 	char *opcode = NULL;
 	char *argument = NULL;
@@ -71,7 +70,7 @@ char *parse_the_line(int linenum, char *line)
 	if (strcmp(opcode, "push") == 0)
 	{
 		argument = strtok(NULL, " \n");
-		if (argument != NULL && is_numeric(argument))
+		if (argument != NULL && is_numerical(argument))
 		{
 			arg = atoi(argument);
 		}
@@ -85,12 +84,12 @@ char *parse_the_line(int linenum, char *line)
 }
 
 /**
- * is_numeric - is a number
+ * is_numerical - is a number
  * @str: string to check
  *
- * Return: 1 if number or 0 if not
+ * Return: 1 if number 0 if not
  */
-int is_numeric(char *str)
+int is_numerical(char *str)
 {
 	int i = 0;
 
@@ -120,21 +119,21 @@ inst_fun get_opcode_func(char *opcode)
 	int i = 0;
 
 	instruction_t instructions[] = {
-		{"push", push_elem},
-		{"pall", pall_elem},
-		{"prnt", prnt_node},
-		{"pop", pop_layer},
-		{"swap", swap_elem},
-		{"add", add_layer},
-		{"nop", nop_elem},
-		{"div", divide_elem},
-		{"sub", sub_layer},
-		{"mul", mul_elem},
-		{"mod", mod_elem},
-		{"pchar", print_char},
-		{"pstr", print_str},
-		{"rotl", rotl_str},
-		{"rotr", rotr_str},
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{"div", divide},
+		{"sub", sub},
+		{"mul", mul},
+		{"mod", mod},
+		{"pchar", pchar},
+		{"pstr", pstr},
+		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 		};
 	while (instructions[i].f != NULL)

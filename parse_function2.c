@@ -1,14 +1,14 @@
 #include "monty.h"
 
 /**
- * mod_elem - computes the rest of the division of the second top element of
+ * mod - computes the rest of the division of the second top element of
  * the stack by the top element of the stack.
  * and operate pop, unless top == zero
  * @stack: stack
  * @line_number: line_number
  * Return: nothing
  */
-void mod_elem(stack_t **stack, unsigned int line_number)
+void mod(stack_t **stack, unsigned int line_number)
 {
 	int result = 0;
 
@@ -24,16 +24,16 @@ void mod_elem(stack_t **stack, unsigned int line_number)
 	}
 	result = (*stack)->prev->n % (*stack)->n;
 	(*stack)->prev->n = result;
-	pop_layer(stack, line_number);
+	pop(stack, line_number);
 }
 
 /**
- * print_char - print the top most value as a char if not out of range
+ * pchar - print the top most value as a char if not out of range
  * @stack: stack
- * @line_number: line number
+ * @line_number: line_number
  * Return: nothing
  */
-void print_char(stack_t **stack, unsigned int line_number)
+void pchar(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
@@ -50,13 +50,13 @@ void print_char(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * print_str - prints the string starting at the top of the stack, followed
+ * pstr - prints the string starting at the top of the stack, followed
  * by a new line, while the interger being treated as an ascii value
  * @stack: stack
  * @line_number: line_number
  * Return: nothing
  */
-void print_str(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
@@ -76,13 +76,13 @@ void print_str(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rotl_str - prints the string starting at the top of the stack, followed
+ * rotl - prints the string starting at the top of the stack, followed
  * by a new line, while the interger being treated as an ascii value
  * @stack: stack
  * @line_number: line_number
  * Return: nothing
  */
-void rotl_str(stack_t **stack, unsigned int line_number)
+void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL, *first = NULL;
 
@@ -104,13 +104,13 @@ void rotl_str(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * rotr_str - prints the string starting at the top of the stack, followed
+ * rotr - prints the string starting at the top of the stack, followed
  * by a new line, while the interger being treated as an ascii value
  * @stack: stack
  * @line_number: line_number
  * Return: nothing
  */
-void rotr_str(stack_t **stack, unsigned int line_number)
+void rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL, *first = *stack, *last = NULL;
 	(void)line_number;

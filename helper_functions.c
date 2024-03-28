@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * free_the_stack - free stack
+ * free_stack - free stack
  * @stack: stack
  *
  * Return: nothing
  */
-void free_the_stack(stack_t **stack)
+void free_stack(stack_t **stack)
 {
 	stack_t *temp = NULL;
 
@@ -24,7 +24,7 @@ void free_the_stack(stack_t **stack)
  * is_empty - check if the stack is empty
  * @stack: stack
  *
- * Return: 1 if its empty or 0 if not
+ * Return: 1 if empty, 0 if not
  **/
 int is_empty(stack_t *stack)
 {
